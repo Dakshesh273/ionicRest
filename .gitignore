@@ -15,6 +15,7 @@ $RECYCLE.BIN/
 
 *.log
 log.txt
+credentials.txt
 npm-debug.log*
 
 /.idea
@@ -29,4 +30,3 @@ npm-debug.log*
 /platforms
 /plugins
 /www
-/credentials
