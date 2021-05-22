@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button shape="round" fill="outline" color="danger" size="small" slot="end" (click)="userService.logOut()">Exit</ion-button>
+    <ion-title>Posts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-avatar slot="start">
+      <img src="{{userService.profilePic}}">
+    </ion-avatar>
+    <ion-label>
+      <h3>{{userService.userName}}</h3>
+      <p>{{userService.userEmail}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-list *ngFor="let post of posts; let i = index;"> 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{post.title}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+    {{post.body}}
+    </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="center">
+          <ion-button shape="round" fill="outline" color="primary" size="small" (click)="openPostModal(post)">Edit</ion-button>
+        </ion-col>  
+        <ion-col class="center">
+          <ion-button shape="round" fill="outline" color="danger" size="small" (click)="confirmDeleteAction(post.id, i)">Remove</ion-button>
+        </ion-col>  
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  </ion-list>
+
+    <div *ngIf="!posts">
+      <ion-card *ngFor="let x of [1,2,3,4,5]">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+          </ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="center">
+              <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+            </ion-col>  
+            <ion-col class="center">
+              <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+            </ion-col>  
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>  
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" (click)="openPostModal('')">
+      <ion-icon size="large" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

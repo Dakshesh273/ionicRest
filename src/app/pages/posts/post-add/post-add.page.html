@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{titleText}}</ion-title>
+    <ion-button shape="round" fill="outline" color="danger" size="small" slot="end" (click)="closeModal('')">close</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="postForm" class="ion-no-padding">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input type="text" background="light" formControlName="title" required placeholder="Title">
+        </ion-input>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Body</ion-label>
+        <ion-textarea type="text" background="light" formControlName="body" required placeholder="Body">
+        </ion-textarea>
+
+      </ion-item>
+    </ion-list>
+
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button color="success" fill="solid" size="default" [disabled]="!postForm.valid" (click)="addPost()">
+          <ion-text>
+            <b>Save</b>
+          </ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>
