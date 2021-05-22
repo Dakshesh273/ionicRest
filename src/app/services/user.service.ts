@@ -37,7 +37,7 @@ export class UserService {
   }
 
   logOut(){
-   // this.googlePlus.logout();
+    this.googlePlus.logout();
     this.isLoggedIn = false;
     this.userName = ''; this.userEmail='';
     this.navCtrl.navigateRoot('/login');
